@@ -1,6 +1,6 @@
 <?php
     // array_map(function($file) { require $file; }, glob(__DIR__ . '/../Fonctions/*.php'));
-    require_once("../Fonctions/navbar.php");
+    require_once(__DIR__ . "/../Fonctions/navbar.php");
 
     createNavbar();
 ?>

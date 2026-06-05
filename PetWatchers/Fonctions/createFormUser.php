@@ -53,11 +53,11 @@
             <div class='formRow'>
                 <div class='field'>
                     <label>NOUVEAU MOT DE PASSE</label>
-                    <input type='text' id='editPassword' placeholder='••••••••••••'>
+                    <input type='password' id='editPassword' placeholder='••••••••••••'>
                 </div>
                 <div class='field'>
                     <label>CONFIRMER LE MOT DE PASSE</label>
-                    <input type='text' id='editConfPassword' placeholder='••••••••••••'>
+                    <input type='password' id='editConfPassword' placeholder='••••••••••••'>
                 </div>
             </div>
 

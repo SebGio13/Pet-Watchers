@@ -2,6 +2,8 @@
     require_once("./Fonctions/navbar.php");
     require_once("./Fonctions/createFormUser.php");
     require_once("./Fonctions/displayAnimal.php");
+    require_once("./Fonctions/getDisponibilites.php");
+    require_once("./Fonctions/getDemandes.php");
 
     // Détermination de l'état de la page en fonction de l'utilisateur
     $etatPage = "Visiteur";
@@ -143,7 +145,35 @@
         <!-- Pet Sitter -->
         <!-- ========== -->
         <?php elseif($etatPage == "PetSitter"):  ?>
+        <div class="indexContainer">
+            <div class="indexHeader">
+                <p class="indexGreeting">Bonjour <?php echo $token["prenom"]; ?> 👋</p>
+                <h1 class="indexTitle">Mon espace propriétaire</h1>
+            </div>
 
+            <div class="tabs">
+                <button class="tabButton active" data-tab="profil">Mon profil</button>
+                <button class="tabButton" data-tab="disponibilites">Mes disponibilités</button>
+                <button class="tabButton" data-tab="demandes">Mes demandes</button>
+            </div>
+
+            <!-- Mon Profil -->
+            <div class="tabPanel active" id="tab-profil">
+                <?php createFormUser($token) ?>
+            </div>
+
+            <!-- Mes disponibilités -->
+            <div class="tabPanel" id="tab-disponibilites">
+                <?php getDisponibilites($token["idUtilisateur"]); ?>
+            </div>
+
+            <!-- Mes demandes -->
+            <div class="tabPanel" id="tab-demandes">
+                <?php getDemandes($token["idUtilisateur"]); ?>
+            </div>
+        </div>
+
+        
         <?php endif; ?>
 
     </body>

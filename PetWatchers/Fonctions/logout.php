@@ -1,5 +1,5 @@
 <?php
-    require_once("verifToken.php");
+    require_once(__DIR__ . "/verifToken.php");
 
     $token = verifToken();
 

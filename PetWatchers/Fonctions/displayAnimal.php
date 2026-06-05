@@ -1,5 +1,5 @@
 <?php
-    require_once("loginBdd.php");
+    require_once(__DIR__ . "/loginBdd.php");
 
     /**
      * displayAnimal
@@ -20,7 +20,7 @@
         // Affichage des animaux
         while($unAnimal = mysqli_fetch_assoc($resGet)){
             $sexe = $unAnimal["sexe"] == 0 ? "♂️" : "♀️";
-            $espece = $unAnimal["idEspece"] == 0 ? "🐶" : "😺";
+            $espece = $unAnimal["idEspece"] == 1 ? "🐶" : "😺";
 
             echo"
                 <div class='animalRow'>
@@ -31,7 +31,7 @@
                     </div>
                     <div class='animalRowAction'>
                         <!-- <button class='animalActionBtn editAnimalBtn'>Modifier</button> -->
-                        <button class='animalActionBtn danger deleteAnimalBtn'>Supprimer</button>
+                        <!-- <button class='animalActionBtn danger deleteAnimalBtn'>Supprimer</button> -->
                     </div>
                 </div>
             ";

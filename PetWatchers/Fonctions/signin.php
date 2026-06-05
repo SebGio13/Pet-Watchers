@@ -1,6 +1,6 @@
 <?php
-    require_once("loginBdd.php");
-    require_once("createToken.php");
+    require_once(__DIR__ . "/loginBdd.php");
+    require_once(__DIR__ . "/createToken.php");
     $liaison = loginBDD();
 
     if(isset($_POST["prenom"])){

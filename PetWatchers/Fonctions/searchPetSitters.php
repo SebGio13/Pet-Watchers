@@ -1,5 +1,5 @@
 <?php
-    require_once("loginBdd.php");
+    require_once(__DIR__ . "/loginBdd.php");
     $liaison = loginBDD();
 
     if(isset($_POST["petSitterSearchBar"])){
@@ -27,11 +27,31 @@
         $res = mysqli_stmt_get_result($resSearchPetSitter);
 
         $petSitterList = [];
+
+        $listDispos = mysqli_prepare($liaison, "SELECT J.libelle, E.tarif FROM etreDisponible as E, jour as J WHERE E.idJour = J.idJour AND E.idUtilisateur = ?");
+
         while($unPetSitter = mysqli_fetch_assoc($res)){
-            $petSitterList[] = $unPetSitter;
+            $id = $unPetSitter["idUtilisateur"];
+            if(isset($petSitterList[$id])){
+                continue;
+            }
+
+            mysqli_stmt_execute($listDispos, [$unPetSitter["idUtilisateur"]]);
+            $resListDispos = mysqli_stmt_get_result($listDispos);
+
+            $dispos = [];
+            while($uneDispo = mysqli_fetch_assoc($resListDispos)){
+                $dispos[] = [
+                    "jour" => $uneDispo["libelle"],
+                    "tarif" => $uneDispo["tarif"]
+                ];
+            }
+
+            $unPetSitter["dispos"] = $dispos;
+            $petSitterList[$id] = $unPetSitter;
         }
 
-        echo json_encode($petSitterList);
+        echo json_encode(array_values($petSitterList));
         mysqli_close($liaison);
     }
 ?>
