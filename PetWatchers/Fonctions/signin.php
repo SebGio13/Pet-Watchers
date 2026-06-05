@@ -51,13 +51,13 @@
             if(isset($_POST["nbMaxAnimaux"]) && isset($_POST["listDispo"])){
                 $role = "PetSitter";
                 $nbMaxAnimaux = $_POST["nbMaxAnimaux"];
-                $createPetSitter = mysqli_prepare($liaison, "INSERT INTO petsitter (idUtilisateur, nbMaxAnimaux) VALUES (?, ?)");
+                $createPetSitter = mysqli_prepare($liaison, "INSERT INTO petSitter (idUtilisateur, nbMaxAnimaux) VALUES (?, ?)");
                 $resCreatePetSitter = mysqli_stmt_execute($createPetSitter, [$lastId, $nbMaxAnimaux]);
                 if(!$resCreatePetSitter) throw new Exception("Erreur lors de la création d'un pet sitter");
 
                 // Remplissage de la table etreDisponible
                 $listDispo = json_decode($_POST["listDispo"], true);
-                $createDisp = mysqli_prepare($liaison, "INSERT INTO etredisponible (idJour, tarif, idUtilisateur) VALUE (?, ?, ?)");
+                $createDisp = mysqli_prepare($liaison, "INSERT INTO etreDisponible (idJour, tarif, idUtilisateur) VALUE (?, ?, ?)");
 
                 foreach($listDispo as $disp){
                     $disp["idUtilisateur"] = $lastId;

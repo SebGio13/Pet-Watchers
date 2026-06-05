@@ -753,3 +753,170 @@ nav > div > a{
 .demandeActionBtn.refuse:hover{ 
     border-color: #e05252; color: #e05252; 
 }
+
+
+
+
+/* ========================================= */
+/* ===== Responsive : Media Queries ======== */
+/* ========================================= */
+
+@media screen and (max-width: 900px){
+
+    /* Formulaires de connexion/inscription : prennent plus de place */
+    .formLogin, .formSignIn{
+        max-width: 80%;
+    }
+
+    /* Conteneurs principaux : padding latéral réduit */
+    .signInLayout, .petSitterForm, .ownerForm{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .indexContainer{
+        padding: 32px 16px 64px;
+    }
+    .visiteur{
+        padding: 56px 16px 48px;
+    }
+
+    /* Titre d'accueil un peu plus petit */
+    .visiteurTitle{
+        font-size: 38px;
+    }
+
+    /* Disponibilités : 3 par ligne au lieu de 4 */
+    .dispItem{
+        flex: 0 0 calc(33.333% - 6px);
+    }
+}
+
+
+@media screen and (max-width: 600px){
+
+    nav{
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 16px;
+    }
+    nav > a{
+        font-size: 24px;
+    }
+    nav > div{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .button{
+        width: 100%;
+        justify-content: center;
+    }
+    nav > div > a.button{
+        width: auto;
+    }
+
+    .formLogin, .formSignIn{
+        max-width: 100%;
+        padding: 24px 16px 48px;
+    }
+
+    .choiceSignIn,
+    .formRow{
+        grid-template-columns: 1fr;
+    }
+
+    .visiteurTitle{
+        font-size: 30px;
+    }
+    .visiteurSubTitle{
+        font-size: 15px;
+    }
+    .visiteurButton{
+        width: 100%;
+        flex-direction: column;
+    }
+    .visiteurButton .button{
+        width: 100%;
+    }
+
+    .indexTitle{
+        font-size: 24px;
+    }
+
+    .tabs{
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tabButton{
+        white-space: nowrap;
+    }
+
+    .capacityRow{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .animalRow{
+        flex-wrap: wrap;
+    }
+    .animalRowActions{
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .petSitterCard,
+    .demandeCard{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .petSitterActions,
+    .demandeStatus,
+    .demandeActions{
+        width: 100%;
+    }
+    .demandeActions{
+        justify-content: flex-end;
+    }
+    .petSitterActions .button{
+        width: 100%;
+    }
+
+    .animauxHeader{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .profileSaveRow{
+        justify-content: stretch;
+    }
+    .profileSaveRow .button{
+        width: 100%;
+    }
+
+    .dispItem{
+        flex: 0 0 calc(50% - 6px);
+    }
+
+    .searchBar{
+        flex-direction: column;
+    }
+    .searchBar .button{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 380px){
+
+    .visiteurTitle{
+        font-size: 26px;
+    }
+
+    .dispItem{
+        flex: 0 0 100%;
+    }
+}

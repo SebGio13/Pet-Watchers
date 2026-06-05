@@ -4,7 +4,7 @@ if(currentPage.includes("signin.php")){
     /* ================================================================== */
     /* ===== Affichage du formulaire correspondant au choix du rôle ===== */
     /* ================================================================== */
-    let petSitterCard = document.querySelector(".petSitterCard")
+    let petSitterCard = document.querySelector(".petSitterChoice")
     let ownerCard = document.querySelector(".ownerCard")
 
     // Formulaire pour pet sitter
@@ -164,7 +164,7 @@ if(currentPage.includes("signin.php")){
                         
                     }
 
-                    fetch("./Fonctions/signin.php", {
+                    fetch("/Fonctions/signin.php", {
                         method: "POST",
                         body: signInData
                     })
@@ -173,7 +173,7 @@ if(currentPage.includes("signin.php")){
 
                         if(data["resultat"]){
                             alert("Votre compte a bien été créé, nous sommes ravis de vous avoir parmi nous.")
-                            window.location.href = "./index.php"
+                            window.location.href = "/index.php"
                         } else {
                             alert("Quelque chose s'est mal passé de notre côté... Pas d'inquiétude, réessayez dans quelques instants !")
                         }
@@ -207,7 +207,7 @@ else if(currentPage.includes("login.php")){
             loginData.append("loginMail", loginMail)
             loginData.append("loginPassword", loginPassword)
 
-            fetch("./Fonctions/login.php", {
+            fetch("/Fonctions/login.php", {
                 method: "POST",
                 body: loginData
             })
@@ -215,7 +215,7 @@ else if(currentPage.includes("login.php")){
             .then(data => {
                 if(data["resultat"]){
                     alert("Content de vous revoir ! Vous êtes bien connecté.")
-                    window.location.href = "./index.php"
+                    window.location.href = "/index.php"
                 } else {
                     alert("Quelque chose s'est mal passé de notre côté... Pas d'inquiétude, réessayez dans quelques instants !")
                 }
@@ -237,14 +237,14 @@ else if(currentPage.includes("login.php")){
 let logoutButton = document.querySelector(".logoutButton")
 if(logoutButton){
     logoutButton.addEventListener("click", function(){
-        fetch("./Fonctions/logout.php", {
+        fetch("/Fonctions/logout.php", {
             method: "POST"
         })
         .then(res => res.json())
         .then(data => {
             if(data["resultat"]){
                 alert("Vous êtes bien deconnecté !")
-                window.location.href = "./index.php"
+                window.location.href = "/index.php"
             }
         })
     })
@@ -302,7 +302,7 @@ if(updateButton){
                 newSignInData.append("newPassword", newPassword)
                 newSignInData.append("newConfirmPassword", newConfirmPassword)
 
-                fetch("./Fonctions/updateUserData.php", {
+                fetch("/Fonctions/updateUserData.php", {
                     method: "POST",
                     body: newSignInData
                 })
@@ -311,7 +311,7 @@ if(updateButton){
 
                     if(data["resultat"]){
                         alert("Vos informations ont bien été modifiées !")
-                        window.location.href = "./index.php"
+                        window.location.href = "/index.php"
                     } else {
                         alert("Quelque chose s'est mal passé de notre côté... Pas d'inquiétude, réessayez dans quelques instants !")
                     }
@@ -365,7 +365,7 @@ if(searchPetSitterButton){
                 searchData.append("joursActifs", null)
             }
 
-            fetch("./Fonctions/searchPetSitters.php", {
+            fetch("/Fonctions/searchPetSitters.php", {
                     method: "POST",
                     body: searchData
                 })
@@ -406,7 +406,7 @@ if(searchPetSitterButton){
                             let demandeData = new FormData()
                             demandeData.append("idPetSitter", idPetSitter)
 
-                            fetch("./Fonctions/insertDemande.php", {
+                            fetch("/Fonctions/insertDemande.php", {
                                 method: "POST",
                                 body: demandeData
                             })
@@ -476,7 +476,7 @@ if(addAnimalButton){
         newListAnimaux = JSON.stringify(newListAnimaux)
         newAnimalData.append("newAnimalData", newListAnimaux)
 
-        fetch("./Fonctions/insertNewAnimal.php", {
+        fetch("/Fonctions/insertNewAnimal.php", {
             method: "POST",
             body: newAnimalData
         })
@@ -485,7 +485,7 @@ if(addAnimalButton){
 
             if(data["resultat"]){
                 alert("Nouveaux animaux ajoutés") // ##### Plus corpo !!!
-                window.location.href = "./index.php"
+                window.location.href = "/index.php"
             } else {
                 alert("Quelque chose s'est mal passé de notre côté... Pas d'inquiétude, réessayez dans quelques instants !")
             }
@@ -524,7 +524,7 @@ if(demandesList){
         demandeData.append("idDemande", card.dataset.idDemande)
         demandeData.append("action", action)
 
-        fetch("./Fonctions/updateDemande.php", {
+        fetch("/Fonctions/updateDemande.php", {
             method: "POST",
             body: demandeData
         })

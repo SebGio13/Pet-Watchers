@@ -14,13 +14,13 @@
         $liaison = loginBDD();
         
         // Récupération de la capacité d'accueil du pet sitter
-        $getCapacite = "SELECT nbMaxAnimaux FROM petsitter WHERE idUtilisateur = $idUtilisateur";
+        $getCapacite = "SELECT nbMaxAnimaux FROM petSitter WHERE idUtilisateur = $idUtilisateur";
         $resGetCapacite = mysqli_query($liaison, $getCapacite);
         $ligneCapacite = mysqli_fetch_assoc($resGetCapacite);
         $nbMaxAnimaux = $ligneCapacite ? $ligneCapacite["nbMaxAnimaux"] : 1;
 
         // Récupération des jours de disponibilité du pet sitter
-        $getDispos = "SELECT idJour, tarif FROM etredisponible WHERE idUtilisateur = $idUtilisateur";
+        $getDispos = "SELECT idJour, tarif FROM etreDisponible WHERE idUtilisateur = $idUtilisateur";
         $resGetDispos = mysqli_query($liaison, $getDispos);
 
         $dispos = [];

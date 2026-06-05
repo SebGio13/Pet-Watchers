@@ -6,7 +6,7 @@
         $petSitterData = "%".$_POST["petSitterSearchBar"]."%";
         $joursActifs = json_decode($_POST["joursActifs"], true);
 
-        $selectJour = $joursActifs != null ? ", etredisponible as E " : "";
+        $selectJour = $joursActifs != null ? ", etreDisponible as E " : "";
         $whereJour = $joursActifs != null ? " AND U.idUtilisateur = E.idUtilisateur " : "";
 
         /* ##### A faire contrôler à Giroud pour requête préparée ##### */

@@ -88,7 +88,7 @@
                         <h3>Je suis propriétaire</h3>
                         <p>J'ai des animaux et je recherche des personnes de confiance pour les garder.</p>
                     </button>
-                    <button class="choiceCard petSitterCard">
+                    <button class="choiceCard petSitterChoice">
                         <div class="choiceArrow">→</div>
                         <div class="choiceIcon">🏠</div>
                         <h3>Je suis pet sitter</h3>
